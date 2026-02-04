@@ -9,7 +9,7 @@ export const metadata = {
   description: "See the Beakcrypt dashboard in action with sample data",
 };
 
-export default function DemoPage() {
+export default async function DemoPage() {
   return (
     <Suspense fallback={<AppLoader />}>
       <DemoHandler />
