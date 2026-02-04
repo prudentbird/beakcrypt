@@ -8,34 +8,67 @@ import {
   Shield,
 } from "lucide-react";
 
-const stats = [
-  {
-    name: "Total Projects",
-    value: "12",
-    icon: Package,
-    change: "+2 this month",
-  },
-  {
-    name: "Team Members",
-    value: "8",
-    icon: Users,
-    change: "+1 this week",
-  },
-  {
-    name: "Secrets Managed",
-    value: "156",
-    icon: Key,
-    change: "+24 this month",
-  },
-  {
-    name: "Security Score",
-    value: "98%",
-    icon: Shield,
-    change: "Excellent",
-  },
-];
+interface DashboardStatsProps {
+  stats?: {
+    projects: number;
+    teamMembers: number;
+    secretsManaged: number;
+    securityScore: number;
+  };
+}
 
-export default function DashboardStats() {
+export default function DashboardStats({ stats: statsProp }: DashboardStatsProps) {
+  const stats = statsProp ? [
+    {
+      name: "Total Projects",
+      value: statsProp.projects.toString(),
+      icon: Package,
+      change: "+2 this month",
+    },
+    {
+      name: "Team Members",
+      value: statsProp.teamMembers.toString(),
+      icon: Users,
+      change: "+1 this week",
+    },
+    {
+      name: "Secrets Managed",
+      value: statsProp.secretsManaged.toString(),
+      icon: Key,
+      change: "+24 this month",
+    },
+    {
+      name: "Security Score",
+      value: `${statsProp.securityScore}%`,
+      icon: Shield,
+      change: "Excellent",
+    },
+  ] : [
+    {
+      name: "Total Projects",
+      value: "12",
+      icon: Package,
+      change: "+2 this month",
+    },
+    {
+      name: "Team Members",
+      value: "8",
+      icon: Users,
+      change: "+1 this week",
+    },
+    {
+      name: "Secrets Managed",
+      value: "156",
+      icon: Key,
+      change: "+24 this month",
+    },
+    {
+      name: "Security Score",
+      value: "98%",
+      icon: Shield,
+      change: "Excellent",
+    },
+  ];
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {stats.map((stat) => {

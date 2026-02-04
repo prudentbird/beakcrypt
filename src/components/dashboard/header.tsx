@@ -10,29 +10,41 @@ import {
 } from "~/components/ui/dropdown-menu";
 
 interface DashboardHeaderProps {
-  organization: {
-    _id: string;
+  organization?: {
+    _id?: string;
     name: string;
     slug: string;
+    logo?: string;
+  };
+  org?: {
+    id: string;
+    name: string;
+    slug: string;
+    logo?: string;
   };
 }
 
 export default function DashboardHeader({
   organization,
+  org,
 }: DashboardHeaderProps) {
+  const orgData = organization || org;
+  
+  if (!orgData) return null;
+
   return (
     <header className="border-b border-border bg-card">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary font-bold">
-            {organization.name.charAt(0).toUpperCase()}
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary font-bold text-lg">
+            {orgData.logo || orgData.name.charAt(0).toUpperCase()}
           </div>
           <div>
             <h1 className="text-lg font-semibold text-foreground">
-              {organization.name}
+              {orgData.name}
             </h1>
             <p className="text-sm text-muted-foreground">
-              /{organization.slug}
+              /{orgData.slug}
             </p>
           </div>
         </div>
