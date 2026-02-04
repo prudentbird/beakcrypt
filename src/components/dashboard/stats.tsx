@@ -17,7 +17,7 @@ interface DashboardStatsProps {
   };
 }
 
-export default function DashboardStats({ stats: statsProp }: DashboardStatsProps) {
+export default async function DashboardStats({ stats: statsProp }: DashboardStatsProps) {
   const stats = statsProp ? [
     {
       name: "Total Projects",

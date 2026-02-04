@@ -21,7 +21,7 @@ interface DashboardProjectsProps {
   isDemoMode?: boolean;
 }
 
-export default function DashboardProjects({
+export default async function DashboardProjects({
   projects,
   organizationId,
   isDemoMode,
